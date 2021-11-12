@@ -88,7 +88,6 @@ const TableBody = ({state, route}) => {
             <td>{merge.attributes.target_branch}</td>
             <td>{merge.__v}</td>
             <td><Button onClick={() => handleRedirect(merge)} variant="primary" /* style='border-radius: 100%' */><FontAwesomeIcon icon={faEye}/></Button>{' '}</td>
-            <td><FontAwesomeIcon icon={faEye}/></td>
         </tr>
     ));
 } 
