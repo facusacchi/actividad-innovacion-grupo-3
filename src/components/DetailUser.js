@@ -1,14 +1,22 @@
 import React from 'react';
-import { Col, Card, Form, Row } from 'react-bootstrap';
+import { Col, Card, Form, Row, Button } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
+import { withRouter } from 'react-router-dom';
 
-export const DetailUser = (mergeUnit) => {
+export const DetailUser = (props) => {
+
+    const {mergeUnit} = props;
     
     const [user, setUser] = useState({})
+
+    const handle = (param) => {
+        console.log(param);
+    }
     
     useEffect(() => {
-        console.log('MergeUnit', mergeUnit.mergeUnit.user);
-        setUser(mergeUnit.mergeUnit.user);
+        /* console.log('MergeUnit', mergeUnit.mergeUnit.user); */
+        setUser(mergeUnit.user);
+        console.log(props);
     }, [])
 
     return (
@@ -27,7 +35,7 @@ export const DetailUser = (mergeUnit) => {
                                                 </Form.Label>
                                                 <div>
                                                     <Col>
-                                                        <Form.Control plaintext readOnly defaultValue=''/>
+                                                        <Form.Control plaintext readOnly defaultValue='{user.id}'/>
                                                     </Col>
                                                 </div>
                                             </Col>
@@ -37,7 +45,7 @@ export const DetailUser = (mergeUnit) => {
                                                 </Form.Label>
                                                 <div>
                                                     <Col>
-                                                        <Form.Control plaintext readOnly defaultValue="Administrator"/>
+                                                        <Form.Control plaintext readOnly defaultValue='{user.name}'/>
                                                     </Col>
                                                 </div>
                                             </Col>
@@ -47,7 +55,7 @@ export const DetailUser = (mergeUnit) => {
                                                 </Form.Label>
                                                 <div>
                                                     <Col>
-                                                        <Form.Control plaintext readOnly defaultValue="root"/>
+                                                        <Form.Control plaintext readOnly defaultValue='{user.username}'/>
                                                     </Col>
                                                 </div>
                                             </Col>
@@ -57,7 +65,7 @@ export const DetailUser = (mergeUnit) => {
                                                 </Form.Label>
                                                 <div>
                                                     <Col>
-                                                        <Form.Control plaintext readOnly defaultValue="admin@example.com"/>
+                                                        <Form.Control plaintext readOnly defaultValue='{user.email}'/>
                                                     </Col>
                                                 </div>
                                             </Col>
@@ -68,6 +76,9 @@ export const DetailUser = (mergeUnit) => {
                     </Card.Body>
                 </Card>
             </Col>
+            <Button onClick={() => handle(user)} variant="primary"></Button>
         </div>
     )
 }
+
+export default withRouter(DetailUser);

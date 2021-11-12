@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { DetailUser } from './DetailUser';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Button } from 'react-bootstrap';
 import { DetailRepository } from './DetailRepository';
 import { DetailAttributes } from './DetailAttributes';
 import { DetailProject } from './DetailProject';
@@ -13,11 +13,10 @@ import { withRouter } from 'react-router-dom';
 
 export const DetailView = ({history}) => {
 
-    
     const [mergeUnit, setMergeUnit] = useState({});
-    
+
     useEffect(() => {
-        console.log(history.location.state);
+        /* console.log(history.location.state); */
         setMergeUnit(history.location.state);
     }, [])
 
