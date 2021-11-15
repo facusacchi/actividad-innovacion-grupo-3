@@ -1,14 +1,10 @@
 import { useEffect, useState } from 'react';
 import DetailUser from './DetailUser';
-import { Row, Col, Button, Form, Card } from 'react-bootstrap';
+import { Row, Col} from 'react-bootstrap';
 import { DetailRepository } from './DetailRepository';
 import { DetailAttributes } from './DetailAttributes';
 import { DetailProject } from './DetailProject';
 import { DetailAssigne } from './DetailAssigne';
-import { DetailLastCommit } from './DetailLastCommit';
-import { DetailVersion } from './DetailVersion';
-import { DetailUrl } from './DetailUrl';
-import { withRouter } from 'react-router-dom';
 
 const DetailView = ({ history }) => {
 

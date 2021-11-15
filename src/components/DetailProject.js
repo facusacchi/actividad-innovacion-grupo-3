@@ -4,6 +4,7 @@ import { Col, Card, Form, Row } from 'react-bootstrap';
 export const DetailProject = ({ mergeUnit }) => {
 
     const { project } = mergeUnit;
+    
     return (
         <div>
             <Col>

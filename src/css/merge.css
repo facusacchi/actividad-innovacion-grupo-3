@@ -1,0 +1,14 @@
+.merge-form {
+    display: flex;
+    justify-content: center;
+}
+
+.container-button {
+    display: flex;
+    align-items: end;
+    margin-left: 15px;
+}
+
+.search-button {
+    height: 38px;
+}
