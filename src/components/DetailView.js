@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import DetailUser from './DetailUser';
 import { Row, Col} from 'react-bootstrap';
 import { DetailRepository } from './DetailRepository';

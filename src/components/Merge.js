@@ -14,13 +14,19 @@ const data = require('../data/data.json');
 const Merge = ({ history }) => {
     const [dataMerge, setDataMerge] = useState([]);
     const [id, setId] = useState("");
+    const [usuario, setUsuario] = useState("");
 
     useEffect(() => {
         setDataMerge(data);
     }, []);
 
     const handleFilter = () => {
-        const newData = data.filter(merge => merge._id.$oid == id);
+        let newData = null;
+        if(id != "") {
+            newData = data.filter(merge => merge._id.$oid == id);
+        } else if (usuario != "") {
+            newData = data.filter(merge => merge.user.name.toLocaleLowerCase().includes(usuario.toLocaleLowerCase()));
+        }
         setDataMerge(newData);
     }
 
@@ -28,9 +34,13 @@ const Merge = ({ history }) => {
         <>
             <Form className='merge-form'>
                 <Row className="mb-3">
-                    <Form.Group as={Col} controlId="formBasicEmail">
+                    <Form.Group as={Col}>
                         <Form.Label>Id merge</Form.Label>
                         <Form.Control type="text" placeholder="Enter id" onChange={(event) => setId(event.target.value)}/>
+                    </Form.Group>
+                    <Form.Group as={Col} controlId="formBasicEmail">
+                        <Form.Label>Usuario</Form.Label>
+                        <Form.Control type="text" placeholder="Enter user" onChange={(event) => setUsuario(event.target.value)}/>
                     </Form.Group>
                 </Row>
                 <div className='container-button'>
