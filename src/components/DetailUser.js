@@ -1,84 +1,75 @@
 import React from 'react';
-import { Col, Card, Form, Row, Button } from 'react-bootstrap';
-import { useEffect, useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { Col, Card, Form, Row } from 'react-bootstrap';
 
-export const DetailUser = (props) => {
-
-    const {mergeUnit} = props;
-    
-    const [user, setUser] = useState({})
-
-    const handle = (param) => {
-        console.log(param);
-    }
-    
-    useEffect(() => {
-        /* console.log('MergeUnit', mergeUnit.mergeUnit.user); */
-        setUser(mergeUnit.user);
-        console.log(props);
-    }, [])
-
+const DetailUser = ({ mergeUnit: { user } }) => {
     return (
         <div>
             <Col>
-                <Card>
-                    <Card.Header style={{fontWeight: 'bold'}}>Datos de usuario</Card.Header>
+                <Card id='form-control' className='box-shadow'>
+                    <Card.Header style={{ fontWeight: 'bold' }}>Datos de usuario</Card.Header>
                     <Card.Body>
-                            <Card.Text>
-                                <Form>
-                                    <Form.Group className="mb-3" controlId="formPlaintextEmail">
-                                        <Row>
-                                            <Col sm={3}>
-                                                <Form.Label column style={{fontWeight:'bold'}}>
-                                                    ID
-                                                </Form.Label>
-                                                <div>
-                                                    <Col>
-                                                        <Form.Control plaintext readOnly defaultValue='{user.id}'/>
-                                                    </Col>
-                                                </div>
-                                            </Col>
-                                            <Col sm={3}>
-                                                <Form.Label column style={{fontWeight:'bold'}}>
-                                                    name
-                                                </Form.Label>
-                                                <div>
-                                                    <Col>
-                                                        <Form.Control plaintext readOnly defaultValue='{user.name}'/>
-                                                    </Col>
-                                                </div>
-                                            </Col>
-                                            <Col sm={3}>
-                                                <Form.Label column style={{fontWeight:'bold'}}>
-                                                    username
-                                                </Form.Label>
-                                                <div>
-                                                    <Col>
-                                                        <Form.Control plaintext readOnly defaultValue='{user.username}'/>
-                                                    </Col>
-                                                </div>
-                                            </Col>
-                                            <Col sm={3}>
-                                                <Form.Label column style={{fontWeight:'bold'}}>
-                                                    email
-                                                </Form.Label>
-                                                <div>
-                                                    <Col>
-                                                        <Form.Control plaintext readOnly defaultValue='{user.email}'/>
-                                                    </Col>
-                                                </div>
-                                            </Col>
-                                        </Row>
-                                    </Form.Group>
-                                </Form>
-                            </Card.Text>
+                        <Card.Text>
+                            <Form>
+                                <Form.Group className="mb-3" controlId="formPlaintextEmail">
+                                    <Row>
+                                        <Col sm={3}>
+                                            <Form.Label column style={{ fontWeight: 'bold' }}>
+                                                Id
+                                            </Form.Label>
+                                            <div>
+                                                <Col>
+                                                    <Form.Text className="text-muted">
+                                                        {user.id}
+                                                    </Form.Text>
+                                                </Col>
+                                            </div>
+                                        </Col>
+                                        <Col sm={3}>
+                                            <Form.Label column style={{ fontWeight: 'bold' }}>
+                                                name
+                                            </Form.Label>
+                                            <div>
+                                                <Col>
+                                                    <Form.Text className="text-muted">
+                                                        {user.name}
+                                                    </Form.Text>
+                                                </Col>
+                                            </div>
+                                        </Col>
+                                        <Col sm={3}>
+                                            <Form.Label column style={{ fontWeight: 'bold' }}>
+                                                username
+                                            </Form.Label>
+                                            <div>
+                                                <Col>
+                                                    <Form.Text className="text-muted">
+                                                        {user.username}
+                                                    </Form.Text>
+                                                </Col>
+                                            </div>
+                                        </Col>
+                                        <Col sm={3}>
+                                            <Form.Label column style={{ fontWeight: 'bold' }}>
+                                                email
+                                            </Form.Label>
+                                            <div>
+                                                <Col>
+                                                    <Form.Text className="text-muted">
+                                                        {user.email}
+                                                    </Form.Text>
+                                                </Col>
+                                            </div>
+                                        </Col>
+                                    </Row>
+                                </Form.Group>
+                            </Form>
+                        </Card.Text>
                     </Card.Body>
                 </Card>
             </Col>
-            <Button onClick={() => handle(user)} variant="primary"></Button>
         </div>
     )
 }
 
-export default withRouter(DetailUser);
+export default DetailUser;
+

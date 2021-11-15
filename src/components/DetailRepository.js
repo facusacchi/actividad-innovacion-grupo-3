@@ -1,11 +1,11 @@
 import React from 'react';
 import { Col, Card, Form, Row } from 'react-bootstrap';
 
-export const DetailRepository = () => {
+export const DetailRepository = ({ mergeUnit: { repository } }) => {
     return (
         <div>
             <Col>
-                <Card>
+                <Card id='form-control' className='box-shadow'>
                     <Card.Header style={{fontWeight: 'bold'}}>Datos de repositorio</Card.Header>
                     <Card.Body>
                             <Card.Text>
@@ -18,7 +18,9 @@ export const DetailRepository = () => {
                                                 </Form.Label>
                                                 <div>
                                                     <Col>
-                                                        <Form.Control plaintext readOnly defaultValue="http://example.com/gitlabhq/gitlab-test"/>
+                                                    <Form.Text className="text-muted">
+                                                        {repository.homepage}
+                                                    </Form.Text>
                                                     </Col>
                                                 </div>
                                             </Col>
@@ -28,7 +30,9 @@ export const DetailRepository = () => {
                                                 </Form.Label>
                                                 <div>
                                                     <Col>
-                                                        <Form.Control plaintext readOnly defaultValue="Gitlab Test"/>
+                                                    <Form.Text className="text-muted">
+                                                        {repository.name}
+                                                    </Form.Text>
                                                     </Col>
                                                 </div>
                                             </Col>

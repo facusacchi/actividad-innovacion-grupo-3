@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { DetailUser } from './DetailUser';
-import { Row, Col, Button } from 'react-bootstrap';
+import DetailUser from './DetailUser';
+import { Row, Col, Button, Form, Card } from 'react-bootstrap';
 import { DetailRepository } from './DetailRepository';
 import { DetailAttributes } from './DetailAttributes';
 import { DetailProject } from './DetailProject';
@@ -8,42 +8,42 @@ import { DetailAssigne } from './DetailAssigne';
 import { DetailLastCommit } from './DetailLastCommit';
 import { DetailVersion } from './DetailVersion';
 import { DetailUrl } from './DetailUrl';
-import { DetailMergeStatus } from './DetailMergeStatus';
 import { withRouter } from 'react-router-dom';
 
-export const DetailView = ({history}) => {
+const DetailView = ({ history }) => {
 
-    const [mergeUnit, setMergeUnit] = useState({});
-
-    useEffect(() => {
-        /* console.log(history.location.state); */
-        setMergeUnit(history.location.state);
-    }, [])
+    const {location} = history;
+    const {state} = location;
 
     return (
         <div>
-            <Row style={{margin:'1% auto'}}>
+            <Row style={{ margin: '1% auto' }}>
                 <Col>
-                    <DetailAttributes mergeUnit={mergeUnit}/>
+                    <DetailAttributes mergeUnit={state} />
                 </Col>
             </Row>
-            <Row style={{margin:'1% auto'}}>
+            <Row style={{ margin: '1% auto' }}>
                 <Col>
-                    <DetailUser mergeUnit={mergeUnit}/>
+                     <DetailUser mergeUnit={state}/>
                 </Col>
             </Row>
-            <Row style={{margin:'1% auto'}}>
+            <Row style={{ margin: '1% auto' }}>
                 <Col>
-                    <DetailRepository/>
+                    <DetailRepository mergeUnit={state}/>
                 </Col>
             </Row>
-            <Row style={{margin:'1% auto'}}>
+            <Row style={{ margin: '1% auto' }}>
                 <Col>
-                    <DetailProject/>
+                    <DetailProject mergeUnit={state}/>
+                </Col>
+            </Row>
+            <Row style={{ margin: '1% auto' }}>
+                <Col>
+                    <DetailAssigne mergeUnit={state}/>
                 </Col>
             </Row>
         </div>
     )
 }
 
-export default withRouter(DetailView);
+export default DetailView;

@@ -6,43 +6,23 @@ import { Table } from "react-bootstrap";
 import '../stylesheets/merge.css';
 import { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
-import { DetailView } from "./DetailView";
+import DetailView from "./DetailView";
 import { withRouter } from 'react-router-dom';
+import '../css/table.css';
 
-const getData = async () => {
-    const {data} = await axios.get('data.json'); 
-    const info = data.map( merge => {
-        return {...merge}
-    })
-    return info;
-}   
+const data = require('../data/data.json');
 
-export const Merge = ({history}) => {
 
-    const [state, setState] = useState({
-        data: [],
-        loading: true
-    });
- 
-    useEffect(() => {
-        console.log('handleRedirect//Merge', history);
-        getData().then( data => {
-            setState({
-                data: data,
-                loading: false
-            })
-        })
-    }, []);
-    
+const Merge = ({history}) => {
     return(
         <>
             <div id='table' className='container-shadow'>
-                <Table striped bordered hover>
+                <Table bordered hover variant="dark">
                         <thead>
                             <TableHead />
                         </thead>
                         <tbody>
-                            <TableBody state={state.data} route={history}/> 
+                            <TableBody state={data} route={history}/> 
                         </tbody>
                 </Table>
             </div>
@@ -53,17 +33,13 @@ export const Merge = ({history}) => {
 const TableHead = () => {
     return (
         <tr>
-            <th>Id</th>
-            <th>Nombre del Usuario</th>
-            {/* <th>Origen del projecto</th> */}
-            {/* <th>Destino del repositorio</th> */}
-            {/* <th>Fecha del atributos</th> */}
-            <th>Estado del merge</th>
-            <th>Última actualización del merge</th>
-            <th>Branch Origen</th>
-            <th>Branch Destino</th>
-            {/* <th>Versión</th> */}
-            <th></th>
+            <th id='form-control'>Id</th>
+            <th id='form-control'>Nombre del Usuario</th>
+            <th id='form-control'>Estado del merge</th>
+            <th id='form-control'>Última actualización del merge</th>
+            <th id='form-control'>Branch Origen</th>
+            <th id='form-control'>Branch Destino</th>
+            <th id='form-control'></th>
         </tr>
     );
 }
@@ -91,4 +67,4 @@ const TableBody = ({state, route}) => {
         </tr>
     ));
 } 
-export default withRouter(TableBody);
+export default withRouter(Merge);

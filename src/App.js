@@ -1,8 +1,7 @@
 import './App.css';
-import { Merge } from './components/Merge.js';
+import Merge from './components/Merge.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './components/Merge.js';
-import { DetailView } from './components/DetailView';
+import DetailView from './components/DetailView';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 
 function App() {
